@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411012747) do
+ActiveRecord::Schema.define(version: 20160411013152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 20160411012747) do
   end
 
   add_index "animes", ["mal_id"], name: "index_animes_on_mal_id", unique: true, using: :btree
+
+  create_table "answers", force: :cascade do |t|
+    t.string   "answer"
+    t.integer  "specific_1"
+    t.integer  "specific_2"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "questions", force: :cascade do |t|
     t.string   "question"
