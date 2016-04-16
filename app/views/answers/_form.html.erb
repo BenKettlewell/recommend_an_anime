@@ -15,14 +15,39 @@
     <%= f.label :answer %><br>
     <%= f.text_field :answer %>
   </div>
+
+
   <div class="field">
     <%= f.label :specific_1 %><br>
     <%= f.number_field :specific_1 %>
   </div>
+
   <div class="field">
     <%= f.label :specific_2 %><br>
     <%= f.number_field :specific_2 %>
   </div>
+  <!--
+  <div class="field">
+    <%= f.label :tag_id %><br>
+    <%= f.number_field :tag_id %>
+  </div>
+  -->
+  <div class="field">
+    <%= f.label :tag_name %><br>
+    <%= f.collection_select(:tag_id, Tag.all, :id, :name) %>
+  </div>
+  <!--
+  <div class="field">
+    <%= f.label :all_animes, "Anime recommendations (seperated by commas)" %><br>
+    <%= f.text_field :all_animes %>
+  </div>
+  -->
+  
+  <div class="field">
+    <%= f.label :all_animes %><br>
+    <%= f.collection_select(:recommendations, Anime.all, :id, :name) %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -19,6 +19,10 @@
     <%= f.label :mal_id %><br>
     <%= f.number_field :mal_id %>
   </div>
+  <div class="field">
+    <%= f.label :all_tags, "Tags (seperated by commas)" %><br>
+    <%= f.text_field :all_tags %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

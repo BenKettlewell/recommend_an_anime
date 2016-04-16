@@ -8,6 +8,7 @@
       <th>Answer</th>
       <th>Specific 1</th>
       <th>Specific 2</th>
+      <th>Recommendations</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= answer.answer %></td>
         <td><%= answer.specific_1 %></td>
         <td><%= answer.specific_2 %></td>
+        <td><%= raw answer.animes.map(&:name).map { |t| link_to t, anime_path(t) }.join(', ') %></td>
         <td><%= link_to 'Show', answer %></td>
         <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
         <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>

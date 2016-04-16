@@ -10,5 +10,10 @@
   <%= @anime.mal_id %>
 </p>
 
+<p>
+  <strong>Tags:</strong>
+  <%= @anime.all_tags %>
+</p>
+
 <%= link_to 'Edit', edit_anime_path(@anime) %> |
 <%= link_to 'Back', animes_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411023729) do
+ActiveRecord::Schema.define(version: 20160414224942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20160411023729) do
     t.integer  "specific_2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "tag_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -38,6 +39,36 @@ ActiveRecord::Schema.define(version: 20160411023729) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "recommendations", force: :cascade do |t|
+    t.integer  "anime_id"
+    t.integer  "answer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "recommendations", ["anime_id"], name: "index_recommendations_on_anime_id", using: :btree
+  add_index "recommendations", ["answer_id"], name: "index_recommendations_on_answer_id", using: :btree
+
+  create_table "reommendations", force: :cascade do |t|
+    t.integer  "anime_id"
+    t.integer  "answer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "reommendations", ["anime_id"], name: "index_reommendations_on_anime_id", using: :btree
+  add_index "reommendations", ["answer_id"], name: "index_reommendations_on_answer_id", using: :btree
+
+  create_table "responses", force: :cascade do |t|
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "responses", ["answer_id"], name: "index_responses_on_answer_id", using: :btree
+  add_index "responses", ["question_id"], name: "index_responses_on_question_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
@@ -57,6 +88,12 @@ ActiveRecord::Schema.define(version: 20160411023729) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
+  add_foreign_key "recommendations", "animes"
+  add_foreign_key "recommendations", "answers"
+  add_foreign_key "reommendations", "animes"
+  add_foreign_key "reommendations", "answers"
+  add_foreign_key "responses", "answers"
+  add_foreign_key "responses", "questions"
   add_foreign_key "taggings", "animes"
   add_foreign_key "taggings", "tags"
 end

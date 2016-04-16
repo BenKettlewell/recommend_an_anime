@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   resources :tags
   resources :answers
   resources :questions
+
+  #get '/animes/:name' => 'animes#show_by_name', as: 'anime_by_name'
   resources :animes
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

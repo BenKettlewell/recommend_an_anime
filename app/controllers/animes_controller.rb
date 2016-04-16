@@ -7,9 +7,15 @@ class AnimesController < ApplicationController
     @animes = Anime.all
   end
 
+#  def show_by_name
+#    @anime = Anime.find_by_name(params[:name])
+#    render :show
+#  end
+
   # GET /animes/1
   # GET /animes/1.json
   def show
+    #redirect_to "/animes/#{Anime.find(params[:id]).name}"
   end
 
   # GET /animes/new
@@ -69,6 +75,6 @@ class AnimesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def anime_params
-      params.require(:anime).permit(:name, :mal_id)
+      params.require(:anime).permit(:name, :mal_id, :all_tags)
     end
 end
