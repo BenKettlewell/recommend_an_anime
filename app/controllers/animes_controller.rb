@@ -5,6 +5,7 @@ class AnimesController < ApplicationController
   # GET /animes.json
   def index
     @animes = Anime.all
+    
   end
 
 #  def show_by_name
