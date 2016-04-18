@@ -5,5 +5,21 @@
   <%= @tag.name %>
 </p>
 
+  <table>
+    <thead>
+      <th>Tagged animes</th>
+    </thead>    
+    <tbody>  
+      <% @tag.animes.each do |anime| %>
+      <tr>
+        <td>
+          <%= anime.name %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table> 
+  
+  
 <%= link_to 'Edit', edit_tag_path(@tag) %> |
 <%= link_to 'Back', tags_path %>

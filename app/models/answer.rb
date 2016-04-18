@@ -5,9 +5,9 @@ class Answer < ActiveRecord::Base
 	has_many :recommendations
 	has_many :animes, through: :recommendations
 
-	def all_animes=(names)
-		self.animes = names.split(", ").map do |name|
-			Anime.where(name: name.strip).first_or_create!
+	def all_animes=(id)
+		self.animes = id.split(", ").map do |name|
+			Anime.where(id: id).first
 		end
 	end
 

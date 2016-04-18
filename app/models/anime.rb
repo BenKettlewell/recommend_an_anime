@@ -24,9 +24,9 @@ class Anime < ActiveRecord::Base
 		joins(:taggings).group("taggings.tag_id")
 	end
 	
-	def slug
-    name.downcase.gsub(" ", "-")  
-  end
+#	def slug
+#    name.downcase.gsub(" ", "-")  
+#  end
 
   def to_param
     "#{id}-#{name.parameterize}"

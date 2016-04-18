@@ -69,6 +69,6 @@ class AnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:answer, :specific_1, :specific_2, :tag_id, :all_animes)
+      params.require(:answer).permit(:answer, :tag_id, :all_animes)
     end
 end

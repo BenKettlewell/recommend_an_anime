@@ -16,16 +16,6 @@
     <%= f.text_field :answer %>
   </div>
 
-
-  <div class="field">
-    <%= f.label :specific_1 %><br>
-    <%= f.number_field :specific_1 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :specific_2 %><br>
-    <%= f.number_field :specific_2 %>
-  </div>
   <!--
   <div class="field">
     <%= f.label :tag_id %><br>
@@ -33,7 +23,7 @@
   </div>
   -->
   <div class="field">
-    <%= f.label :tag_name %><br>
+    <%= f.label :tag_activated %><br>
     <%= f.collection_select(:tag_id, Tag.all, :id, :name) %>
   </div>
   <!--
@@ -44,8 +34,8 @@
   -->
   
   <div class="field">
-    <%= f.label :all_animes %><br>
-    <%= f.collection_select(:recommendations, Anime.all, :id, :name) %>
+    <%= f.label :all_animes, "Anime recommendations" %>
+    <%= f.collection_select(:all_animes, Anime.all, :id, :name) %>
   </div>
   
   <div class="actions">
