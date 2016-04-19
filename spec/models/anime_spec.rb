@@ -4,24 +4,21 @@ require 'rails_helper'
 # Prefix instance methods with a '#'
 
 describe Anime do
-	context '#name' do
-		it 'returns the name of the anime' do
-			anime = FactoryGirl.create(:anime)
-			expect(anime.name).to eq 'Tari Tari'
-		end
+	subject(:anime) {FactoryGirl.create(:anime)}
+
+	context "#name" do
+		it {expect(anime.name).to eq 'Tari Tari'}
 	end
 	context '#mal_id' do
-		it 'returns the mal_id of the anime' do
-			anime = FactoryGirl.create(:anime)
-			expect(anime.mal_id).to eq 13333
-		end
+		#it 'returns the mal_id of the anime' do
+		it {expect(anime.mal_id).to eq 13333}
 	end
 	context '#all_tags' do
-		it 'returns all the tags on the anime' do
-			anime = FactoryGirl.create(:anime)
-			expect(anime.all_tags).to eq 'music, school, sad'
-		end
-	context  ''
+		#it 'returns all the tags on the anime' do
+		it {expect(anime.all_tags).to eq 'music, school, sad'}
+	end
+	context '.tag_counts' do
+		it {expect(Anime.tag_counts).to eq 3}
 	end
 
 
