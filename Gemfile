@@ -47,7 +47,7 @@ group :development do
 end
 
 group :test do
-	
+	gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 	gem 'capybara'
 	gem 'guard-rspec'
 end

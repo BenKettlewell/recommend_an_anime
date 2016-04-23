@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :anime do
-    name 	'Tari Tari'
-    mal_id 13333
+    sequence(:name) {|n| "anime_#{n}"}
+    sequence(:mal_id)
     all_tags 'music, school, sad'
   end
 end

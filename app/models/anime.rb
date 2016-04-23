@@ -1,5 +1,5 @@
 class Anime < ActiveRecord::Base
-	validates_presence_of :name, :mal_id
+	validates_presence_of :mal_id
 	has_many :taggings, dependent: :destroy
 	has_many :tags, through: :taggings
 	has_many :recommendations
@@ -20,14 +20,12 @@ class Anime < ActiveRecord::Base
 	end
 
 	def self.tag_counts
-		Tag.select("tags.*, count(taggings.tag_id) as count").
-		joins(:taggings).group("taggings.tag_id")
+		# Code that doesn't work from tutorial
+		#Tag.select("tags.*, count(taggings.tag_id) as count").
+		#joins(:taggings).group("taggings.tag_id")
+		Tag.all.uniq.count()
 	end
 	
-#	def slug
-#    name.downcase.gsub(" ", "-")  
-#  end
-
   def to_param
     "#{id}-#{name.parameterize}"
   end
