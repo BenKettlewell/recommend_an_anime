@@ -1,26 +1,22 @@
 require 'rails_helper'
-=begin
-Tests to write
 
-creation with no title
-duplicate mal_ids
-duplicate names
-no all_tags
-one all_tags
-
-=end
-describe Anime do
+RSpec.describe Anime, type: :model do
 	subject(:anime) {FactoryGirl.create(:anime)} 
 	
 	describe '.tag_counts' do	
 		context 'only one entry exists in Anime' do
+			before do
+				anime
+			end
 			it 'has one entry' do
-				byebug
 				expect(Anime.all.count).to eq 1
 			end
 			context 'the single entry has 3 tags' do
+				before do
+					anime
+				end
 				it 'returns the count of unique tags' do
-					expect(Anime.tag_counts).to eq Taggings.all.count()
+					expect(Anime.tag_counts).to eq anime.tags.count()
 				end
 			end
 		end
@@ -35,11 +31,11 @@ describe Anime do
 					FactoryGirl.create(:anime, all_tags: 'music, school')
 				end
 				it 'returns the count of unique tags, not the sum' do
-					expect(Anime.tag_counts).to eq 4
+					expect(Anime.tag_counts).to eq 3
 				end
 			end
 			context 'two animes with shared and different tags' do
-				let!(:all_tags) {'music, school, different_tag4, another_tag5'}
+				let!(:anime2) {FactoryGirl.create(:anime, all_tags: 'music, school, different_tag4, another_tag5')}
 				#before do
 				#	FactoryGirl.create(:anime, name: 'anime2', mal_id: 1234, 
 				#		)
@@ -54,15 +50,13 @@ describe Anime do
 	describe '#create' do
 		context 'database is fresh' do
 			it 'has no entries' do
-				expect(Anime.find(name: 'Tari Tari').not_to exist)
+				expect(Anime.all.count).to eq 0
 			end
 		end
 		context 'with no name' do
-			before do
-				FactoryGirl.create(:anime, name: '')
-			end
+			let(:anime) {FactoryGirl.create(:anime, name: '')}
 			it 'creates the record with no name' do
-				expect(anime.to exist?)
+				expect(anime.valid?)
 			end
 		end
 	end
@@ -73,8 +67,12 @@ describe Anime do
 			it {expect(new_anime.name).to eq 'Tari Tari'}
 		end 
 	end
+
 	describe '#mal_id' do
-		it {expect(anime.mal_id).to eq 13333}
+		context 'mal id is 13333' do
+			let(:anime) {FactoryGirl.create(:anime, mal_id: 13333)}
+			it {expect(anime.mal_id).to eq 13333}
+		end
 	end
 	describe '#all_tags' do
 		it {expect(anime.all_tags).to eq 'music, school, sad'}

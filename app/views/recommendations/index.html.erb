@@ -1,0 +1,9 @@
+<!--<p id="notice"><%= notice %></p>-->
+
+<h1>Let's begin</h1> <!--Make Dynamic -->
+
+<div><%= "Question: #{@question}"%></div>
+<div>
+  <% @answers.each do |answer| %>
+    <%= answer.answer %>
+  <% end %>

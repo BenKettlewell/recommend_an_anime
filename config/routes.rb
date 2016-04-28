@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :answers
   resources :questions
 
+  get "/recommendations" => 'recommendations#index'
+
   #get '/animes/:name' => 'animes#show_by_name', as: 'anime_by_name'
   resources :animes
 
