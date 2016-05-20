@@ -1,0 +1,4 @@
+<% if false #-----/----/----/---- %>
+$("#questions-list").html("<%= j (render partial: 'questions/question', locals: { questions: @questions } ) %>");
+<% end #________________ %>
+$('#questions-list').html("<%= j render @questions %>");

@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :questions
 
   get "/recommendations" => 'recommendations#index'
+  post "recommendations/start", to: 'recommendations#start', as: 'start'
+  post "/recommendations" => 'recommendations#submit', as: 'submit'
+  
 
   #get '/animes/:name' => 'animes#show_by_name', as: 'anime_by_name'
   resources :animes

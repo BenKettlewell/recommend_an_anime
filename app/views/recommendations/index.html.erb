@@ -1,9 +1,37 @@
-<!--<p id="notice"><%= notice %></p>-->
+<section id="begin-section">
+	<h1>Let's Begin</h1>
+	
+	<%= button_to "Begin", { action: "start" }, id: "begin-button", remote: true, format: "js" %>
+</section>
+<div>	
+	<%= form_tag submit_path, remote: true, format: "js" do %>
+		<p>
+			Question Num:<br />
+			<%= number_field_tag "question_num" %>
+		</p>
 
-<h1>Let's begin</h1> <!--Make Dynamic -->
-
-<div><%= "Question: #{@question}"%></div>
+		<p>
+			<%= submit_tag 'Submit' %>
+		</p>
+		<% end %>
+</div>
 <div>
-  <% @answers.each do |answer| %>
-    <%= answer.answer %>
-  <% end %>
+	<h1>Questions</h1>
+	<ul id='questions-list'>
+		<%= render @questions %>
+	</ul>
+</div>
+<div>
+	<h1>Answers</h1>
+	<ul id='answers-list'>
+		<%= render @answers %>
+	</ul>
+</div>
+<div>
+	<h1>Flags</h1>
+	<ul>
+		<% @flags.each do |flag| %>
+			<%= render partial: "flag", locals: {flag: flag} %>
+		<% end %>
+	</ul>
+</div>
