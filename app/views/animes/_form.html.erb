@@ -4,26 +4,27 @@
       <h2><%= pluralize(@anime.errors.count, "error") %> prohibited this anime from being saved:</h2>
 
       <ul>
-      <% @anime.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @anime.errors.full_messages.each do |message| %>
+          <li>
+            <%= message %>
+          </li>
+          <% end %>
       </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :mal_id %><br>
-    <%= f.number_field :mal_id %>
-  </div>
-  <div class="field">
-    <%= f.label :all_tags, "Tags (seperated by commas)" %><br>
-    <%= f.text_field :all_tags %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+    <% end %>
+      <div class="field">
+        <%= f.label :name %><br>
+          <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :mal_id %><br>
+        <%= f.number_field :mal_id %>
+      </div>
+      <div class="field">
+        <%= f.label :all_tags, "Tags (seperated by commas)" %><br>
+          <%= f.text_field :all_tags %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+      <% end %>
