@@ -15,10 +15,22 @@
     <%= f.label :question %><br>
     <%= f.text_field :question %>
   </div>
-    <div class="field">
-    <%= f.label :answer %><br>
-    <%= f.text_field :answer %>
+  <div class="field">
+    <%= f.label :all_answers %><br>
+    <%= f.text_field :all_answers %>
   </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div> 
+  <div>
+    <h2>Answers</h2>
+      <% @answers = @question.answers %>
+    <ul>
+      
+    </ul>
+  </div>
+<% if false #-----\/----\/----\/---- %>
+  
   <div class="field">
     <%= f.label :specific_1 %><br>
     <%= f.number_field :specific_1 %>
@@ -26,8 +38,6 @@
   <div class="field">
     <%= f.label :specific_2 %><br>
     <%= f.number_field :specific_2 %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  </div>-->
+<% end #-----\/----\/----\/---- %>
 <% end %>

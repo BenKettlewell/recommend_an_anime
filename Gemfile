@@ -39,6 +39,7 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem "factory_girl_rails"
+  gem 'selenium-webdriver' # For js calls in rspec
   
   # To speed up rspec in linux
 	gem "spring", :platforms => :ruby

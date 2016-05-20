@@ -93,4 +93,15 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+  # Added as a possible way to account for capybara running tests before ajax fully loads
+  # ended up not solving my problem so I commented it back out. 
+  #def wait_for_ajax
+  #  Timeout.timeout(Capybara.default_wait_time) do
+  #    loop do
+  #      active = page.evaluate_script('jQuery.active')
+  #      break if active == 0
+  #    end
+  #  end
+  #end
 end
