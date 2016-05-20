@@ -1,24 +1,21 @@
 class Question < ActiveRecord::Base
 	has_many :responses
 	has_many :answers, through: :responses
+	attr_writer :all_answers
+	after_save :assign_answers
 
-#	def all_answers=(answers)
-#		self.answers = answers.split(", ").map do |name|
-#			Tag.where(name: name.strip).first_or_create!
-#		end
-#	end
-#
-#	def all_tags
-#		self.tags.map(&:name).join(", ")
-#	end
-#	
-#	def self.tagged_with(name)
-#		Tag.find_by_name!(name).animes
-#	end
-#
-#	def self.tag_counts
-#		Tag.select("tags.*, count(taggings.tag_id) as count").
-#		joins(:taggings).group("taggings.tag_id")
-#	end
-
+	def all_answers
+		@all_answers || answers.map(&:answer).join(' ')
+	end
+	
+	private
+	
+	def assign_answers
+		byebug
+		if @all_answers
+			self.answers = @all_answers.split(/\s+/).map do |answer|
+				Answer.find_or_create_by(answer: answer)
+			end
+		end
+	end
 end
